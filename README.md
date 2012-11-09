@@ -1,4 +1,4 @@
-vimpeppers
+simsalavim
 ==========
 
 Personal vim distro
