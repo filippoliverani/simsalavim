@@ -89,11 +89,12 @@ set wildmenu
 
 syntax on
 set background=light
+set t_Co=256
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
     let g:solarized_termcolors=16
     let g:solarized_termtrans=1
     let g:solarized_contrast="high"
-    let g:solarized_visibility="high
+    let g:solarized_visibility="high"
     colorscheme solarized
 endif
 
