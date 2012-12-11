@@ -25,12 +25,22 @@ Bundle 'pangloss/vim-javascript'
 
 " General Config =============================================================
 
+scriptencoding utf-8
 set autoread
 set backspace=indent,eol,start
 set cursorline
+set ruler                   " show the ruler
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+set showcmd
 set hidden
 set history=1000
 set laststatus=2
+set statusline=%<%f\    " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=%{fugitive#statusline()} "  Git Hotness
+set statusline+=\ [%{&ff}/%Y]            " filetype
+set statusline+=\ [%{getcwd()}]          " current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
 set lazyredraw
 set number
 set showcmd
@@ -39,6 +49,7 @@ set showmode
 set title
 set ttyfast
 set visualbell
+set nowrap
 
 " Leader
 let mapleader = ","
@@ -66,23 +77,25 @@ set backup
 
 " Indentation ================================================================
 
+filetype plugin indent on
 set autoindent
-set smartindent
 set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=4                " use indents of 4 spaces
+set expandtab                   " tabs are spaces, not tabs
+set tabstop=4                   " an indentation every four columns
+set softtabstop=4               " let backspace delete indent
+set matchpairs+=<:>                " match, to be used with %
+set pastetoggle=<F12>           " pastetoggle (sane
 set expandtab
 set shiftround
-
-filetype plugin on
-filetype indent on
+autocmd FileType python,ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 set list listchars=tab:»·,trail:·
 
 " Completion =================================================================
 
-set wildmode=list:longest
+set wildmode=list:longest,full
 set wildmenu
 
 " Colors =====================================================================
@@ -91,11 +104,11 @@ syntax on
 set background=light
 set t_Co=256
 if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-    let g:solarized_termcolors=16
-    let g:solarized_termtrans=1
-    let g:solarized_contrast="high"
-    let g:solarized_visibility="high"
-    colorscheme solarized
+        let g:solarized_termcolors=16
+        let g:solarized_termtrans=1
+        let g:solarized_contrast="high"
+        let g:solarized_visibility="high"
+        colorscheme solarized
 endif
 
 " Scrolling ==================================================================
@@ -167,15 +180,15 @@ set tags=./tags,~/.vim/tags,~/.tags
 
 if has("autocmd")
 
-  set omnifunc=syntaxcomplete#Complete
+        set omnifunc=syntaxcomplete#Complete
 
-  augroup vimrcEx
-  au!
+        augroup vimrcEx
+                au!
 
-  " Remove any trailing whitespace that is in the file
-  autocmd BufWrite * if ! &bin | :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")')) | endif
+                " Remove any trailing whitespace that is in the file
+                autocmd BufWrite * if ! &bin | :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")')) | endif
 
-  augroup END
+        augroup END
 
 endif " has("autocmd")
 
@@ -186,6 +199,8 @@ endif " has("autocmd")
 map <Leader>n :NERDTreeToggle<CR>
 map <C-e> :NERDTreeToggle<CR>
 
+let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -204,6 +219,7 @@ map <leader>a :Ack!<space>
 
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = ['tag']
+let g:ctrlp_custom_ignore = {'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
 
 map <C-t> :CtrlPTag<CR>
 
