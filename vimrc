@@ -15,6 +15,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
@@ -49,6 +50,7 @@ set showmode
 set title
 set ttyfast
 set visualbell
+set t_vb=
 set nowrap
 
 " Leader
@@ -89,7 +91,7 @@ set pastetoggle=<F12>           " pastetoggle (sane
 set expandtab
 set shiftround
 autocmd FileType python,ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+"autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 set list listchars=tab:»·,trail:·
 
@@ -176,30 +178,15 @@ cmap w!! %!sudo tee > /dev/null %
 " Tags
 set tags=./tags,~/.vim/tags,~/.tags
 
-" Autocommands ===============================================================
-
-if has("autocmd")
-
-        set omnifunc=syntaxcomplete#Complete
-
-        augroup vimrcEx
-                au!
-
-                " Remove any trailing whitespace that is in the file
-                autocmd BufWrite * if ! &bin | :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")')) | endif
-
-        augroup END
-
-endif " has("autocmd")
-
 " Plugin settings ============================================================
 
 " NERD Tree
 
-map <Leader>n :NERDTreeToggle<CR>
 map <C-e> :NERDTreeToggle<CR>
+map <leader>n :NERDTreeFind<CR>
 
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeMinimalUI = 1
@@ -207,9 +194,22 @@ let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
 let g:NERDTreeWinSize = 40
 
-" Supertab
+" Completion
 
-let g:SuperTabLongestHighlight = 1
+set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
+
+let g:SuperTabLongestEnhanced = 1
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
+let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
+let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \   call SuperTabChain(&omnifunc, "<c-p>") |
+    \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+    \ endif
 
 " Ack
 
