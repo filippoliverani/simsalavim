@@ -70,9 +70,12 @@ silent !mkdir -p ~/.vim/tmp/undo > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/backup > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/swap > /dev/null 2>&1
 
-set undodir=~/.vim/tmp/undo
-set undoreload=10000
-set undofile
+if version >= 703
+    set undodir=~/.vim/tmp/undo
+    set undoreload=10000
+    set undofile
+endif
+
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
