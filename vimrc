@@ -16,13 +16,17 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'phpcomplete.vim'
-Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-haml'
+Bundle 'rodjek/vim-puppet'
 
 " General Config =============================================================
 
@@ -128,7 +132,7 @@ set sidescroll=1
 nnoremap D d$
 nnoremap Y y$
 
-" It's 2012.
+" Move on displayed lines
 noremap j gj
 noremap k gk
 
@@ -150,11 +154,11 @@ nnoremap <leader>s :%s//<left>
 " Clear search highlighting
 map <C-l> :nohlsearch<CR>
 
-" Fuck you, help key
+" Disable help key
 noremap  <F1> <NOP>
 inoremap <F1> <NOP>
 
-" Disable those arrow keys!
+" Disable arrow keys
 inoremap  <Up>     <NOP>
 noremap   <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -222,7 +226,7 @@ map <leader>a :Ack!<space>
 
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = ['tag']
-let g:ctrlp_custom_ignore = {'dir':  '\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
+let g:ctrlp_custom_ignore = {'dir':  'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
 
 map <C-t> :CtrlPTag<CR>
 
