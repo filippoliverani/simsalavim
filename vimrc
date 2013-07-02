@@ -1,12 +1,13 @@
 set nocompatible
 
-" Vundle =====================================================================
+" Vundle
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Bundles
+
 Bundle 'gmarik/vundle'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'kien/ctrlp.vim'
@@ -18,6 +19,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-powerline'
+Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'msanders/snipmate.vim'
 Bundle 'tpope/vim-markdown'
@@ -28,9 +30,10 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'rodjek/vim-puppet'
 
-" General Config =============================================================
+" General Config
 
 scriptencoding utf-8
+set encoding=utf-8
 set autoread
 set backspace=indent,eol,start
 set cursorline
@@ -58,17 +61,18 @@ set t_vb=
 set nowrap
 
 " Leader
+
 let mapleader = ","
 let maplocalleader = "\\"
 
-" Search Settings ============================================================
+" Search Settings
 
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
 
-" Persistent undo and backups ================================================
+" Persistent undo and backups
 
 silent !mkdir -p ~/.vim/tmp/undo > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/backup > /dev/null 2>&1
@@ -84,7 +88,7 @@ set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
 
-" Indentation ================================================================
+" Indentation
 
 filetype plugin indent on
 set autoindent
@@ -102,31 +106,26 @@ autocmd FileType python,ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
 
 set list listchars=tab:»·,trail:·
 
-" Completion =================================================================
+" Completion
 
 set wildmode=list:longest,full
 set wildmenu
 
-" Colors =====================================================================
+" Colors
 
-syntax on
+set t_Co=16
+syntax enable
 set background=light
-set t_Co=256
-if filereadable(expand("~/.vim/bundle/vim-colors-solarized/colors/solarized.vim"))
-        let g:solarized_termcolors=16
-        let g:solarized_termtrans=1
-        let g:solarized_contrast="high"
-        let g:solarized_visibility="high"
-        colorscheme solarized
-endif
+colorscheme solarized
+call togglebg#map("<F2>")
 
-" Scrolling ==================================================================
+" Scrolling
 
 set scrolloff=8
 set sidescrolloff=15
 set sidescroll=1
 
-" Convenience mappings =======================================================
+"" Convenience mappings
 
 " Make capitals behave
 nnoremap D d$
@@ -149,16 +148,20 @@ map <S-H> gT
 map <S-L> gt
 
 " Substitute
+
 nnoremap <leader>s :%s//<left>
 
 " Clear search highlighting
+
 map <C-l> :nohlsearch<CR>
 
 " Disable help key
+
 noremap  <F1> <NOP>
 inoremap <F1> <NOP>
 
 " Disable arrow keys
+
 inoremap  <Up>     <NOP>
 noremap   <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -169,23 +172,28 @@ inoremap  <Right>  <NOP>
 noremap   <Right>  <NOP>
 
 " Change Working Directory to that of the current file
+
 cmap cwd lcd %:p:h
 
 " Visual shifting (does not exit Visual mode)
+
 vnoremap < <gv
 vnoremap > >gv
 
 " Quickly edit/reload the vimrc file
+
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Save as root even if not root
+
 cmap w!! %!sudo tee > /dev/null %
 
 " Tags
+
 set tags=./tags,~/.vim/tags,~/.tags
 
-" Plugin settings ============================================================
+"" Plugins settings
 
 " NERD Tree
 
@@ -213,10 +221,10 @@ let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
 let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
 
 autocmd FileType *
-    \ if &omnifunc != '' |
-    \   call SuperTabChain(&omnifunc, "<c-p>") |
-    \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-    \ endif
+            \ if &omnifunc != '' |
+            \   call SuperTabChain(&omnifunc, "<c-p>") |
+            \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+            \ endif
 
 " Ack
 
@@ -234,3 +242,9 @@ map <C-t> :CtrlPTag<CR>
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
+
+" Powerline
+
+let g:Powerline_theme='long'
+let g:Powerline_colorscheme='solarized16_light'
+let g:Powerline_symbols = 'fancy'
