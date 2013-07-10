@@ -19,11 +19,13 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'stephenmckinney/vim-solarized-powerline'
 Bundle 'mileszs/ack.vim'
-Bundle 'msanders/snipmate.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle "tomtom/tlib_vim"
+Bundle 'honza/vim-snippets'
+Bundle 'garbas/vim-snipmate'
 Bundle 'tpope/vim-markdown'
-Bundle 'phpcomplete.vim'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
@@ -245,6 +247,5 @@ let g:slime_paste_file = tempname()
 
 " Powerline
 
-let g:Powerline_theme='long'
-let g:Powerline_colorscheme='solarized16_light'
+let g:Powerline_colorscheme='solarized'
 let g:Powerline_symbols = 'fancy'
