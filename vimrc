@@ -249,3 +249,7 @@ let g:slime_paste_file = tempname()
 
 let g:Powerline_colorscheme='solarized'
 let g:Powerline_symbols = 'fancy'
+
+" Ack
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
