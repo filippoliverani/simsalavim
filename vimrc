@@ -18,7 +18,6 @@ Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'mileszs/ack.vim'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle "tomtom/tlib_vim"
@@ -244,11 +243,6 @@ map <C-t> :CtrlPTag<CR>
 
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
-
-" Powerline
-
-let g:Powerline_colorscheme='solarized'
-let g:Powerline_symbols = 'fancy'
 
 " Ack
 
