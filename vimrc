@@ -19,10 +19,6 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'mileszs/ack.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle "tomtom/tlib_vim"
-Bundle 'honza/vim-snippets'
-Bundle 'garbas/vim-snipmate'
 Bundle 'tpope/vim-markdown'
 Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'pangloss/vim-javascript'
@@ -199,7 +195,8 @@ set tags=./tags,~/.vim/tags,~/.tags
 " NERD Tree
 
 map <C-e> :NERDTreeToggle<CR>
-map <leader>n :NERDTreeFind<CR>
+map <leader>n :NERDTreeToggle<CR>
+map <leader>f :NERDTreeFind<CR>
 
 let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
 let NERDTreeQuitOnOpen=1
