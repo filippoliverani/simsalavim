@@ -26,6 +26,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'rodjek/vim-puppet'
+Bundle 'kchmck/vim-coffee-script'
 
 " General Config
 
