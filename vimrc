@@ -27,6 +27,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-haml'
 Bundle 'rodjek/vim-puppet'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'epeli/slimux'
 
 " General Config
 
@@ -237,10 +238,14 @@ let g:ctrlp_custom_ignore = {'dir':  'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', '
 
 map <C-t> :CtrlPTag<CR>
 
-" Slime
+" Slimux
 
-let g:slime_target = "tmux"
-let g:slime_paste_file = tempname()
+map <Leader>s :SlimuxREPLSendLine<CR>
+vmap <Leader>s :SlimuxREPLSendSelection<CR>
+map <Leader>a :SlimuxShellLast<CR>
+map <Leader>k :SlimuxSendKeysLast<CR>
+
+let g:slimux_scheme_keybindings=1
 
 " Ack
 
