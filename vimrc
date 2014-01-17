@@ -242,7 +242,7 @@ map <C-t> :CtrlPTag<CR>
 
 map <Leader>s :SlimuxREPLSendLine<CR>
 vmap <Leader>s :SlimuxREPLSendSelection<CR>
-map <Leader>a :SlimuxShellLast<CR>
+map <Leader>c :SlimuxShellLast<CR>
 map <Leader>k :SlimuxSendKeysLast<CR>
 
 let g:slimux_scheme_keybindings=1
