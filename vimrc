@@ -58,6 +58,8 @@ set ttyfast
 set visualbell
 set t_vb=
 set nowrap
+set noesckeys
+set formatoptions-=or
 
 " Leader
 
@@ -126,15 +128,27 @@ set sidescroll=1
 
 "" Convenience mappings
 
+" Simple save
+
+map <C-s> <Esc>:wa<CR>
+imap <C-s> <Esc>:wa<CR>
+
 " Make capitals behave
+
 nnoremap D d$
 nnoremap Y y$
+command! Q q
+command! Qa qa
+command! W w
+command! Wa wa
 
 " Move on displayed lines
+
 noremap j gj
 noremap k gk
 
 " Easy buffer navigation
+
 noremap <C-h>     <C-w>h
 noremap <C-j>     <C-w>j
 noremap <C-k>     <C-w>k
@@ -169,6 +183,12 @@ inoremap  <Left>   <NOP>
 noremap   <Left>   <NOP>
 inoremap  <Right>  <NOP>
 noremap   <Right>  <NOP>
+noremap   <Right>  <NOP>
+
+" Disable useless stuff
+
+map Q <NOP>
+map K <NOP>
 
 " Change Working Directory to that of the current file
 
@@ -226,9 +246,11 @@ autocmd FileType *
             \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
             \ endif
 
-" Ack
+" ack and grep
 
 map <leader>a :Ack!<space>
+let g:ackprg = 'ag --nogroup --nocolor --column'
+set grepprg=ag
 
 " CtrlP
 
@@ -247,6 +269,16 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 
 let g:slimux_scheme_keybindings=1
 
-" Ack
+" Powerline
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+set laststatus=2
+set noshowmode
