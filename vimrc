@@ -118,6 +118,7 @@ set t_Co=16
 syntax enable
 set background=light
 colorscheme solarized
+let g:solarized_termcolors=16
 call togglebg#map("<F2>")
 
 " Scrolling
