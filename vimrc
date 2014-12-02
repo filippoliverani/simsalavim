@@ -94,15 +94,15 @@ set backup
 filetype plugin indent on
 set autoindent
 set smarttab
-set shiftwidth=4                " use indents of 4 spaces
+set shiftwidth=2                " use indents of 4 spaces
 set expandtab                   " tabs are spaces, not tabs
-set tabstop=4                   " an indentation every four columns
-set softtabstop=4               " let backspace delete indent
+set tabstop=2                   " an indentation every four columns
+set softtabstop=2               " let backspace delete indent
 set matchpairs+=<:>                " match, to be used with %
 set pastetoggle=<F12>           " pastetoggle (sane
 set expandtab
 set shiftround
-autocmd FileType python,ruby setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
 "autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 set list listchars=tab:»·,trail:·
