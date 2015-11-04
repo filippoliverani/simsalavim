@@ -33,6 +33,7 @@ Bundle 'epeli/slimux'
 
 scriptencoding utf-8
 set encoding=utf-8
+set termencoding=utf-8
 set autoread
 set backspace=indent,eol,start
 set cursorline
@@ -115,7 +116,7 @@ set wildmenu
 
 set t_Co=16
 syntax enable
-set background=light
+set background=dark
 colorscheme solarized
 let g:solarized_termcolors=16
 call togglebg#map("<F2>")
@@ -260,6 +261,10 @@ let g:ctrlp_custom_ignore = {'dir':  'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', '
 
 map <C-t> :CtrlPTag<CR>
 
+" Syntastic
+
+let g:syntastic_check_on_open = 1
+
 " Slimux
 
 map <Leader>s :SlimuxREPLSendLine<CR>
@@ -270,6 +275,10 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 let g:slimux_scheme_keybindings=1
 
 " Powerline
+"
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 if ! has('gui_running')
     set ttimeoutlen=10
