@@ -14,4 +14,4 @@ fi
 
 ln -sf $path/vimrc ~/.vimrc
 
-vim +BundleInstall! +BundleClean +qall
+vim +PluginInstall! +PluginClean! +qall

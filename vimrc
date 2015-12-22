@@ -4,7 +4,7 @@ set nocompatible
 
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " Bundles
 
@@ -27,6 +27,8 @@ Bundle 'epeli/slimux'
 Bundle 'kien/rainbow_parentheses.vim'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'wlangstroth/vim-racket'
+
+call vundle#end()
 
 " General Config
 
