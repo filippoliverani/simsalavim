@@ -20,14 +20,13 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-markdown'
-Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-haml'
-Bundle 'rodjek/vim-puppet'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'epeli/slimux'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'wlangstroth/vim-racket'
 
 " General Config
 
@@ -264,6 +263,7 @@ map <C-t> :CtrlPTag<CR>
 " Syntastic
 
 let g:syntastic_check_on_open = 1
+let g:syntastic_enable_elixir_checker = 1
 
 " Slimux
 
