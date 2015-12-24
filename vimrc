@@ -244,8 +244,8 @@ let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc
 
 autocmd FileType *
             \ if &omnifunc != '' |
-            \   call SuperTabChain(&omnifunc, "<c-p>") |
-            \   call SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+            \   silent! all SuperTabChain(&omnifunc, "<c-p>") |
+            \   silent! all SuperTabSetDefaultCompletionType("<c-x><c-u>") |
             \ endif
 
 " ack and grep
@@ -277,10 +277,10 @@ map <Leader>k :SlimuxSendKeysLast<CR>
 let g:slimux_scheme_keybindings=1
 
 " Powerline
-"
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+
+silent! python from powerline.vim import setup as powerline_setup
+silent! python powerline_setup()
+silent! python del powerline_setup
 
 if ! has('gui_running')
     set ttimeoutlen=10
