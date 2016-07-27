@@ -22,10 +22,8 @@ Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-markdown'
 Bundle 'pangloss/vim-javascript'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'kchmck/vim-coffee-script'
 Bundle 'epeli/slimux'
 Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'elixir-lang/vim-elixir'
 Bundle 'wlangstroth/vim-racket'
 
 call vundle#end()
@@ -222,25 +220,16 @@ map <C-e> :NERDTreeToggle<CR>
 map <leader>n :NERDTreeToggle<CR>
 map <leader>f :NERDTreeFind<CR>
 
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeQuitOnOpen=1
-let NERDTreeShowHidden=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDTreeChDirMode = 2
+let g:NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+let g:NERDTreeQuitOnOpen=1
+let g:NERDTreeShowHidden=1
+let g:NERDTreeHighlightCursorline=1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeChDirMode = 2
 let g:NERDTreeWinSize = 40
-
-" Completion
-
-set omnifunc=syntaxcomplete#Complete
-set completeopt=longest,menuone
-
-let g:SuperTabLongestEnhanced = 1
-let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabCompletionContexts = ['s:ContextText', 's:ContextDiscover']
-let g:SuperTabContextTextOmniPrecedence = ['&omnifunc', '&completefunc']
-let g:SuperTabContextDiscoverDiscovery = ["&completefunc:<c-x><c-u>", "&omnifunc:<c-x><c-o>"]
+let g:NERDTreeDirArrows = 1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
 
 autocmd FileType *
             \ if &omnifunc != '' |
@@ -266,6 +255,9 @@ map <C-t> :CtrlPTag<CR>
 
 let g:syntastic_check_on_open = 1
 let g:syntastic_enable_elixir_checker = 1
+let g:syntastic_twig_twiglint_exec = 'php'
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
 
 " Slimux
 
