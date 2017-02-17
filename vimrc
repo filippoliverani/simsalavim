@@ -113,12 +113,12 @@ set wildmenu
 
 " Colors
 
-set t_Co=16
 syntax enable
 set background=dark
-colorscheme solarized
 let g:solarized_termcolors=16
-call togglebg#map("<F2>")
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+"colorscheme solarized
 
 " Scrolling
 
@@ -253,11 +253,21 @@ map <C-t> :CtrlPTag<CR>
 
 " Syntastic
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_enable_elixir_checker = 1
 let g:syntastic_twig_twiglint_exec = 'php'
-let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+let g:syntastic_php_checkers = ['php', 'phpcs']
+let g:syntastic_javascript_checkers = ['eslint']
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " Slimux
 
@@ -270,9 +280,9 @@ let g:slimux_scheme_keybindings=1
 
 " Powerline
 
-silent! python from powerline.vim import setup as powerline_setup
-silent! python powerline_setup()
-silent! python del powerline_setup
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
 
 if ! has('gui_running')
     set ttimeoutlen=10
