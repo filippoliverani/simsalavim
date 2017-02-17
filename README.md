@@ -1,6 +1,8 @@
-simsalavim
-==========
+# Simsalavim
 
-Personal vim distro
-    
-    curl https://raw.github.com/filippo-liverani/simsalavim/master/bootstrap -L -o - | sh
+An effective vim configuration
+
+## Install
+```
+curl https://raw.github.com/filippo-liverani/simsalavim/master/bootstrap -L -o - | sh
+```
