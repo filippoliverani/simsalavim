@@ -258,10 +258,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_enable_elixir_checker = 1
-let g:syntastic_twig_twiglint_exec = 'php'
-let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-let g:syntastic_php_checkers = ['php', 'phpcs']
 let g:syntastic_javascript_checkers = ['eslint']
 
 highlight link SyntasticErrorSign SignColumn
