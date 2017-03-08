@@ -240,14 +240,16 @@ autocmd FileType *
 " ack and grep
 
 map <leader>a :Ack!<space>
-let g:ackprg = 'ag --nogroup --nocolor --column'
-set grepprg=ag
+let g:ackprg = 'rg --vimgrep'
+set grepprg=rg\ --vimgrep
 
 " CtrlP
 
+let g:ctrlp_user_command = 'rg %s --files --vimgrep --glob ""'
+let g:ctrlp_use_caching = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = ['tag']
-let g:ctrlp_custom_ignore = {'dir':  'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
+let g:ctrlp_custom_ignore = {'dir': 'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
 
 map <C-t> :CtrlPTag<CR>
 
