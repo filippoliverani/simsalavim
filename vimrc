@@ -216,6 +216,11 @@ cmap w!! %!sudo tee > /dev/null %
 
 set tags=.git/tags,./tags,~/.vim/tags,~/.tags
 
+" Paste
+
+set clipboard=unnamed
+map <Leader>p :set paste<CR><esc>"*]p:set nopaste<cr>
+
 "" Plugins settings
 
 " NERD Tree
