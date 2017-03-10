@@ -59,6 +59,7 @@ set t_vb=
 set nowrap
 set noesckeys
 set formatoptions-=or
+runtime macros/matchit.vim
 
 " Leader
 
@@ -210,7 +211,7 @@ cmap w!! %!sudo tee > /dev/null %
 
 " Tags
 
-set tags=./tags,~/.vim/tags,~/.tags
+set tags=.git/tags,./tags,~/.vim/tags,~/.tags
 
 "" Plugins settings
 
