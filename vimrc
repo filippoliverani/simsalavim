@@ -80,9 +80,9 @@ silent !mkdir -p ~/.vim/tmp/backup > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/swap > /dev/null 2>&1
 
 if version >= 703
-    set undodir=~/.vim/tmp/undo
-    set undoreload=10000
-    set undofile
+  set undodir=~/.vim/tmp/undo
+  set undoreload=10000
+  set undofile
 endif
 
 set backupdir=~/.vim/tmp/backup
@@ -94,16 +94,15 @@ set backup
 filetype plugin indent on
 set autoindent
 set smarttab
-set shiftwidth=2                " use indents of 4 spaces
-set expandtab                   " tabs are spaces, not tabs
-set tabstop=2                   " an indentation every four columns
-set softtabstop=2               " let backspace delete indent
-set matchpairs+=<:>                " match, to be used with %
-set pastetoggle=<F12>           " pastetoggle (sane
+set shiftwidth=2
+set expandtab
+set tabstop=2
+set softtabstop=2
+set matchpairs+=<:>
+set pastetoggle=<F12>
 set expandtab
 set shiftround
 autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
-"autocmd FileType c,cpp,java,php,javascript,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 set list listchars=tab:»·,trail:·
 
@@ -128,6 +127,10 @@ set sidescrolloff=15
 set sidescroll=1
 
 "" Convenience mappings
+
+" Indentation
+
+map <leader>i mmgg=G`m
 
 " Simple save
 
@@ -233,10 +236,10 @@ let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
 
 autocmd FileType *
-            \ if &omnifunc != '' |
-            \   silent! all SuperTabChain(&omnifunc, "<c-p>") |
-            \   silent! all SuperTabSetDefaultCompletionType("<c-x><c-u>") |
-            \ endif
+      \ if &omnifunc != '' |
+      \   silent! all SuperTabChain(&omnifunc, "<c-p>") |
+      \   silent! all SuperTabSetDefaultCompletionType("<c-x><c-u>") |
+      \ endif
 
 " ack and grep
 
@@ -284,12 +287,12 @@ python powerline_setup()
 python del powerline_setup
 
 if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
 endif
 
 set laststatus=2
