@@ -1,15 +1,19 @@
 #!/bin/sh
 
+set -e
+
+brew install vim --with-override-system-vi
+
 path="$HOME/.simsalavim"
 
 if [ -e $path/.git ]; then
-    cd $path && git pull
+  cd $path && git pull
 else
-    git clone https://github.com/filippo-liverani/simsalavim.git $path
+  git clone https://github.com/filippo-liverani/simsalavim.git $path
 fi
 
 if [ ! -e $HOME/.vim/bundle/vundle ]; then
-    git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
 fi
 
 ln -sf $path/vimrc ~/.vimrc
