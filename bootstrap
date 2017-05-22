@@ -3,6 +3,7 @@
 set -e
 
 brew install vim --with-override-system-vi
+brew install ripgrep
 
 path="$HOME/.simsalavim"
 
