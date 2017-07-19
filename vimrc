@@ -1,32 +1,28 @@
-set nocompatible
+" minpac
+"
+packadd minpac
+call minpac#init()
 
-" Vundle
+call minpac#add('k-takata/minpac')
+call minpac#add('altercation/vim-colors-solarized')
+call minpac#add('kien/ctrlp.vim')
+call minpac#add('ervandew/supertab')
+call minpac#add('scrooloose/nerdtree')
+call minpac#add('scrooloose/syntastic')
+call minpac#add('tpope/vim-commentary')
+call minpac#add('tpope/vim-repeat')
+call minpac#add('tpope/vim-surround')
+call minpac#add('tpope/vim-unimpaired')
+call minpac#add('mileszs/ack.vim')
+call minpac#add('tpope/vim-markdown')
+call minpac#add('pangloss/vim-javascript')
+call minpac#add('vim-ruby/vim-ruby')
+call minpac#add('epeli/slimux')
+call minpac#add('kien/rainbow_parentheses.vim')
+call minpac#add('wlangstroth/vim-racket')
 
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" Bundles
-
-Bundle 'gmarik/vundle'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'kien/ctrlp.vim'
-Bundle 'ervandew/supertab'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'mileszs/ack.vim'
-Bundle 'tpope/vim-markdown'
-Bundle 'pangloss/vim-javascript'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'epeli/slimux'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'wlangstroth/vim-racket'
-
-call vundle#end()
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
 
 " General Config
 
