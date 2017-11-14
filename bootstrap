@@ -3,20 +3,14 @@
 set -e
 
 brew install vim --with-override-system-vi
-brew install ripgrep
+brew install ripgrep fzf
 
 path="$HOME/.simsalavim"
 
-if [ -e $path/.git ]; then
-  cd $path && git pull
-else
-  git clone https://github.com/filippo-liverani/simsalavim.git $path
-fi
-
-if [ ! -e $HOME/.vim/bundle/vundle ]; then
-  git clone https://github.com/gmarik/vundle.git $HOME/.vim/bundle/vundle
+if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
+  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 ln -sf $path/vimrc ~/.vimrc
 
-vim +PluginInstall! +PluginClean! +qall
+vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall

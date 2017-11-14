@@ -1,28 +1,25 @@
-" minpac
+" vim-plug
 "
-packadd minpac
-call minpac#init()
+call plug#begin('~/.vim/plugged')
 
-call minpac#add('k-takata/minpac')
-call minpac#add('altercation/vim-colors-solarized')
-call minpac#add('kien/ctrlp.vim')
-call minpac#add('ervandew/supertab')
-call minpac#add('scrooloose/nerdtree')
-call minpac#add('scrooloose/syntastic')
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-unimpaired')
-call minpac#add('mileszs/ack.vim')
-call minpac#add('tpope/vim-markdown')
-call minpac#add('pangloss/vim-javascript')
-call minpac#add('vim-ruby/vim-ruby')
-call minpac#add('epeli/slimux')
-call minpac#add('kien/rainbow_parentheses.vim')
-call minpac#add('wlangstroth/vim-racket')
+Plug 'altercation/vim-colors-solarized'
+Plug 'junegunn/fzf'
+Plug 'ervandew/supertab'
+Plug 'scrooloose/nerdtree'
+Plug 'w0rp/ale'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-markdown'
+Plug 'pangloss/vim-javascript'
+Plug 'vim-ruby/vim-ruby'
+Plug 'epeli/slimux'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'wlangstroth/vim-racket'
 
-command! PackUpdate call minpac#update()
-command! PackClean call minpac#clean()
+call plug#end()
 
 " General Config
 
@@ -247,29 +244,10 @@ map <leader>a :Ack!<space>
 let g:ackprg = 'rg --vimgrep'
 set grepprg=rg\ --vimgrep
 
-" CtrlP
+" fzf
 
-let g:ctrlp_user_command = 'rg %s --files --vimgrep --glob ""'
-let g:ctrlp_use_caching = 0
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_custom_ignore = {'dir': 'vendor/bundler$\|\.git$\|\.hg$\|\.svn$', 'file': '\.exe$\|\.so$\|\.dll$' }
-
-map <C-t> :CtrlPTag<CR>
-
-" Syntastic
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_loc_list_height = 5
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
-
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
+map <C-p> :Files<CR>
+nmap <Leader>o :Files<CR>
 
 " Slimux
 
