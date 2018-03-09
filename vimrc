@@ -73,12 +73,9 @@ silent !mkdir -p ~/.vim/tmp/undo > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/backup > /dev/null 2>&1
 silent !mkdir -p ~/.vim/tmp/swap > /dev/null 2>&1
 
-if version >= 703
-  set undodir=~/.vim/tmp/undo
-  set undoreload=10000
-  set undofile
-endif
-
+set undodir=~/.vim/tmp/undo
+set undoreload=10000
+set undofile
 set backupdir=~/.vim/tmp/backup
 set directory=~/.vim/tmp/swap
 set backup
@@ -109,6 +106,8 @@ set wildmenu
 
 syntax enable
 set background=dark
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
 let g:solarized_termcolors=16
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
@@ -261,9 +260,9 @@ let g:slimux_scheme_keybindings=1
 
 " Powerline
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
 
 if ! has('gui_running')
   set ttimeoutlen=10
