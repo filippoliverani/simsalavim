@@ -93,7 +93,7 @@ set matchpairs+=<:>
 set pastetoggle=<F12>
 set expandtab
 set shiftround
-autocmd FileType java setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType java,groovy setlocal shiftwidth=4 tabstop=4 softtabstop=4
 
 set list listchars=tab:»·,trail:·
 
