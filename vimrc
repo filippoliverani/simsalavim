@@ -1,13 +1,13 @@
 " vim-plug
-"
+
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'ervandew/supertab'
+Plug 'lifepillar/vim-mucomplete'
 Plug 'scrooloose/nerdtree'
 Plug 'w0rp/ale'
+Plug 'tpope/sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
@@ -19,6 +19,8 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'epeli/slimux'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
+Plug 'posva/vim-vue'
+Plug 'elixir-editors/vim-elixir'
 
 call plug#end()
 
@@ -99,19 +101,15 @@ set list listchars=tab:»·,trail:·
 
 " Completion
 
-set wildmode=list:longest,full
-set wildmenu
+set completeopt+=longest,menuone
+set shortmess+=c
+let g:ale_completion_enabled = 1
 
 " Colors
 
 syntax enable
 set background=dark
 au BufNewFile,BufRead Jenkinsfile setf groovy
-
-let g:solarized_termcolors=16
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-"colorscheme solarized
 
 " Scrolling
 
@@ -275,3 +273,7 @@ endif
 
 set laststatus=2
 set noshowmode
+
+" Syntastic
+
+let g:syntastic_enable_elixir_checker = 1
