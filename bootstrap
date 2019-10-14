@@ -19,4 +19,4 @@ fi
 
 ln -sf $path/vimrc ~/.vimrc
 
-vim - +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
