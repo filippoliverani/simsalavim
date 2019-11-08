@@ -2,10 +2,12 @@
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'arcticicestudio/nord-vim'
 Plug '/usr/local/opt/fzf'
+Plug 'arcticicestudio/nord-vim'
+Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'epeli/slimux'
+Plug 'janko/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'lifepillar/vim-mucomplete'
@@ -13,16 +15,15 @@ Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
-Plug 'dense-analysis/ale'
 Plug 'wlangstroth/vim-racket'
 
 call plug#end()
@@ -111,6 +112,10 @@ let g:ale_completion_enabled = 1
 " Colors
 
 syntax enable
+augroup nord-overrides
+  autocmd!
+  autocmd ColorScheme nord highlight rubySymbol ctermfg=14
+augroup END
 colorscheme nord
 set background=dark
 au BufNewFile,BufRead Jenkinsfile setf groovy
@@ -272,12 +277,17 @@ endif
 set laststatus=2
 set noshowmode
 
-" Syntastic
-
-let g:syntastic_enable_elixir_checker = 1
-
 " Airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
+
+" Test
+function! TmuxTransform(cmd) abort
+  return 'tmux send-keys -t ":1.1" "'. a:cmd . '" Enter; tmux capture-pane -t ":1.1"; tmux show-buffer'
+endfunction
+
+let g:test#custom_transformations = {'tmux': function('TmuxTransform')}
+let g:test#transformation = 'tmux'
+nmap <silent> <leader>t :TestNearest<CR>
