@@ -10,21 +10,24 @@ Plug 'epeli/slimux'
 Plug 'janko/vim-test'
 Plug 'junegunn/fzf.vim'
 Plug 'kien/rainbow_parentheses.vim'
-Plug 'lifepillar/vim-mucomplete'
 Plug 'mileszs/ack.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'posva/vim-vue'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby'
 Plug 'wlangstroth/vim-racket'
+Plug 'ycm-core/YouCompleteMe', { 'do': './install.py' }
 
 call plug#end()
 
@@ -112,6 +115,8 @@ let g:ale_completion_enabled = 1
 " Colors
 
 syntax enable
+syntax sync minlines=10000
+set redrawtime=10000
 augroup nord-overrides
   autocmd!
   autocmd ColorScheme nord highlight rubySymbol ctermfg=14
@@ -283,11 +288,4 @@ let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_powerline_fonts = 1
 
-" Test
-function! TmuxTransform(cmd) abort
-  return 'tmux send-keys -t ":1.1" "'. a:cmd . '" Enter; tmux capture-pane -t ":1.1"; tmux show-buffer'
-endfunction
-
-let g:test#custom_transformations = {'tmux': function('TmuxTransform')}
-let g:test#transformation = 'tmux'
 nmap <silent> <leader>t :TestNearest<CR>
