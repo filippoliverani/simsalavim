@@ -1,5 +1,11 @@
 " vim-plug
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
 
 Plug '/usr/local/opt/fzf'
@@ -249,11 +255,12 @@ autocmd FileType *
       \   silent! all SuperTabChain(&omnifunc, "<c-p>") |
       \   silent! all SuperTabSetDefaultCompletionType("<c-x><c-u>") |
       \ endif
+autocmd BufEnter *.deface :setlocal filetype=eruby
 
 " ack and grep
 
 map <leader>a :Ack!<space>
-let g:ackprg = 'rg --vimgrep'
+let g:ackprg = 'rg --vimgrep --pcre2'
 set grepprg=rg\ --vimgrep
 
 " fzf
