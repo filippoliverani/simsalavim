@@ -2,21 +2,14 @@
 
 set -e
 
-path="$HOME/.simsalavim"
+SIMSALAVIM_PATH="$HOME/.simsalavim"
 
-if [ -e $path/.git ]; then
-  cd $path && git pull
+if [ -e $SIMSALAVIM_PATH/.git ]; then
+	cd $SIMSALAVIM_PATH && git pull
 else
-  git clone https://github.com/filippoliverani/simsalavim.git $path
+	git clone https://github.com/filippoliverani/simsalavim.git $path
 fi
 
-brew install vim
-brew install ripgrep fzf
+brew install nvim lazygit ripgrep fd
 
-if [ ! -e $HOME/.vim/autoload/plug.vim ]; then
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-ln -sf $path/vimrc ~/.vimrc
-
-vim +PlugUpgrade +PlugInstall +PlugUpdate +PlugClean +qall
+ln -sf $SIMSALAVIM_PATH/nvim ~/.config/nvim

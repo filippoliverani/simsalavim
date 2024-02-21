@@ -1,6 +1,6 @@
 # Simsalavim
 
-An effective vim configuration
+An effective neovim configuration
 
 ## Install
 ```
